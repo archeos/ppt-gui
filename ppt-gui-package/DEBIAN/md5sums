@@ -1,0 +1,9 @@
+a0eff122e904e757241297a4053c2490  ./usr/share/applications/archeos-specific/ppt.desktop
+ea346ad0cfdfcabc4367c6be068b830f  ./usr/share/archeos/osm-bundler/linux/icons/python_icon.png
+a38aebf92e50dc0caebc3d1df608fa9c  ./usr/share/archeos/osm-bundler/linux/icons/info_icon.png
+66437b2eca6e8d65996a5f18ef825154  ./usr/share/archeos/osm-bundler/linux/ppt_gui.py
+c32d24c2211684324894ba6c8b93ad50  ./usr/share/archeos/osm-bundler/README_PPTGUI.txt
+eb5dd821c7e08bf54d2aea3e36597b2e  ./usr/share/icons/archeos/48x48/ppt_icon48.png
+776f02f97b9ae811ab56160ad81eef9e  ./usr/share/icons/archeos/64x64/ppt_icon64.png
+3d297ab82d5d9f86011803209775908b  ./usr/share/doc/ppt-gui/changelog
+70d6af5dee75b18ec643770e69e28261  ./usr/bin/ppt_gui_start

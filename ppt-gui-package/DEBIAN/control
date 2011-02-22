@@ -1,0 +1,11 @@
+Package: ppt-gui
+Version: 0.1-archeos0.4
+Architecture: i386
+Maintainer: Alessandro Bezzi <alessandro.bezzi@arc-team.com.com>
+Installed-Size: 31
+Depends: python-qt4, python-imaging, xdg-utils, libgfortran3, liblapack3gf, ppt
+Section: photogrammetry
+Priority: extra
+Homepage: http://code.google.com/p/osm-bundler/
+Description: Python Photogrammetry Toolbox GUI
+ Very simple GUI to run Python Photogrammetry Toolbox.

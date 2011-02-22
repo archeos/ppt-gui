@@ -1,0 +1,15 @@
+
+[Desktop Entry]
+Categories=Photogrammetry;
+Exec=ppt_gui_start
+GenericName=Python Photogrammetry Toolbox
+Hidden=false
+Icon=/usr/share/icons/archeos/48x48/ppt_icon48.png
+Name=Python Photogrammetry Toolbox
+NoDisplay=false
+StartupNotify=true
+Terminal=1
+TryExec=ppt_gui_start
+Type=Application
+Version=0.1
+Name[en_GB]=ppt.desktop

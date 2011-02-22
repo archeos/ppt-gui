@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/share/archeos/osm-bundler/linux/
+python ./ppt_gui.py

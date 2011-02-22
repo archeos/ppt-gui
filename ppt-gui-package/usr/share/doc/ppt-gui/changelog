@@ -1,0 +1,8 @@
+python-photogrammetri-toolbox changelog
+
+0.1-archeos0.2
+	* Added changelog
+0.1-archeos0.3
+	* changed /usr/share/application/ to /usr/share/applications/
+0.1-archeos0.4
+	* Fixed Icon: entry in desktop file	
