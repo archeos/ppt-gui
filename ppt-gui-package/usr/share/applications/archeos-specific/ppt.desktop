@@ -12,4 +12,4 @@ Terminal=1
 TryExec=ppt_gui_start
 Type=Application
 Version=0.1
-Name[en_GB]=ppt
+Name[en_GB]=ppt.desktop

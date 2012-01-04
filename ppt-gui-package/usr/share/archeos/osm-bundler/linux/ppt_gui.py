@@ -24,10 +24,14 @@ class PPTGUI(QtGui.QWidget):
         self.tab_2 = QtGui.QWidget()
         self.tab_2.setObjectName("tab_2")
         self.tabWidget.addTab(self.tab_2, "")
+        self.tab_4 = QtGui.QWidget()
+        self.tab_4.setObjectName("tab_4")
+        self.tabWidget.addTab(self.tab_4, "")
         self.initUI()
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("MainWindow", "1. Run Bundler", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QtGui.QApplication.translate("MainWindow", "2. Run CMVS/PMVS", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QtGui.QApplication.translate("MainWindow", "or run PMVS without CMVS", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QtGui.QApplication.translate("MainWindow", "Check Camera Database", None, QtGui.QApplication.UnicodeUTF8))
     def initUI(self):
 #################################################################### 
 
@@ -300,6 +304,63 @@ class PPTGUI(QtGui.QWidget):
         self.output3.resize(850, 270)
         self.output3.setAcceptRichText(True)
         self.output3.setAutoFormatting(QtGui.QTextEdit.AutoBulletList)
+        
+
+# Set Camera Database      
+        
+# button 1 for pictures directory 
+        self.button8 = QtGui.QPushButton('Select Photos Path', self.tab_4)
+        self.button8.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.button8.move(20, 30)
+        self.connect(self.button8, QtCore.SIGNAL('clicked()'), self.showDialog4)
+        self.setFocus()
+
+# directory path label
+        self.label12 = QtGui.QLabel('path:', self.tab_4)
+        self.label12.move(190, 34)
+
+        self.text9 = QtGui.QLineEdit(self.tab_4)
+        self.text9.move(235, 30)
+        self.text9.resize(550, 27)
+
+# help button select directory
+	self.help_button9 = QtGui.QPushButton("", self.tab_4)
+	self.help_button9.setIcon(QtGui.QIcon('icons/info_icon.png'))
+        self.help_button9.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.help_button9.move(800, 26)
+        self.connect(self.help_button9, QtCore.SIGNAL('clicked()'), self.on_help9_clicked)
+        self.setFocus()
+        
+# button run Camera Database
+        self.button10 = QtGui.QPushButton('Run', self.tab_4)
+	self.button10.setIcon(QtGui.QIcon('icons/python_icon.png'))
+        self.button10.move(20, 80)
+        self.connect(self.button10, QtCore.SIGNAL('clicked()'), self.startcamdat)
+
+        self.text10 = QtGui.QLineEdit(self.tab_4)
+	self.text10.move(120, 84)
+	self.text10.setReadOnly(True)
+        self.text10.resize(760, 27)
+
+	self.connect(self.text9, QtCore.SIGNAL('textChanged(QString)'), self.onChangedpathcamdat)
+	
+#output
+
+        self.line4 = QtGui.QFrame(self.tab_4)
+        self.line4.setGeometry(QtCore.QRect(10, 220, 880, 20))
+        self.line4.setFrameShape(QtGui.QFrame.HLine)
+        self.line4.setFrameShadow(QtGui.QFrame.Sunken)
+        self.line4.setObjectName("line1")
+
+        self.label23 = QtGui.QLabel('Output Camera Database:', self.tab_4)
+        self.label23.move(20, 240)
+
+	self.output4 = QtGui.QTextBrowser(self.tab_4)
+        self.output4.move(20, 264)
+        self.output4.resize(850, 270)
+        self.output4.setAcceptRichText(True)
+        self.output4.setAutoFormatting(QtGui.QTextEdit.AutoBulletList)
+	
 
 ####################################################################    
         self.setWindowTitle('Python Photogrammetry Toolbox GUI v 0.1')
@@ -434,6 +495,24 @@ class PPTGUI(QtGui.QWidget):
 	proc = subprocess.Popen((str(command)), shell=True, stdout=subprocess.PIPE)
 	output = proc.stdout.read()
 	self.output3.append(str(output))
+	
+# select directory with photos (Camera Database)
+    def showDialog4(self):
+	directoryname = QtGui.QFileDialog.getExistingDirectory(self, 'Open directory with photos', '/home')
+        self.text9.setText(directoryname)
+        
+# help button 9 - select directory
+    def on_help9_clicked(self):
+		QtGui.QMessageBox.information(self, "Help!", "Select the directory with original photos. Pictures have to be in JPG file format. \n\nPress the RUN button to check if the camera is inset inside the database. \n\nIf the camera is not correctly saved, please insert in the terminal windows the CCD width in mm", QtGui.QMessageBox.Ok)
+
+# connection path-command
+    def onChangedpathcamdat(self, text):
+	self.text10.setText("python ./RunBundler.py --photos=" + self.text9.displayText() + " --checkCameraDatabase")
+
+# start Camera Database
+    def startcamdat(self):
+	command = self.text10.displayText()
+	proc = subprocess.Popen((str(command)), shell=True)
 
 if __name__ == '__main__':
 
